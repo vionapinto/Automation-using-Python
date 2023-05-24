@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 
 service = Service('/home/dci-student/Downloads/chromedriver.exe')
 
-def get_drvier():
+def get_driver():
   # Set options to make browsing easier
   options = webdriver.ChromeOptions()
   options.add_argument("disable-infobars")
@@ -20,7 +20,7 @@ def get_drvier():
   return driver
 
 def main():
-  driver = get_drvier()
+  driver = get_driver()
   element = driver.find_element(by="xpath", value="/html/body/div[1]/div/h1[1]")
   return element.text
 
