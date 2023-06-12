@@ -5,3 +5,4 @@ with fitz.open("students.pdf") as pdf:
   for page in pdf:
     text = text + page.get_text()
     print(text)
+    
