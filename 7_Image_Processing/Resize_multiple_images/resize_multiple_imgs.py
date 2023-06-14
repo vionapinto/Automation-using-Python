@@ -1,7 +1,5 @@
 import cv2
-
-image = cv2.imread('galaxy.jpeg')
-print(image.shape) # --> (779, 438, 3)
+import os
 
 def calculate_size(scale_percentage, width, height):
     new_width = int(width * scale_percentage / 100)
@@ -9,7 +7,6 @@ def calculate_size(scale_percentage, width, height):
     print('New dim:', new_width, new_height)
     return(new_width, new_height)
 
-print(calculate_size(10, image.shape[1], image.shape[0]))
 
 def resize(image_path, scale_percentage, resized_path):
     image = cv2.imread(image_path)
@@ -17,4 +14,6 @@ def resize(image_path, scale_percentage, resized_path):
     resized_image = cv2.resize(image, new_dimension)
     cv2.imwrite(resized_path, resized_image)
 
-resize('galaxy.jpeg', 10, 'resized-galaxy.jpeg')
+images = os.listdir('images')
+for image in images:
+    resize(f'images/{image}', 10, f'resized_images/resized-{image}')
